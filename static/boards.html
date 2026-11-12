@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meus quadros | Quadro Kanban</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/extra.css">
+</head>
+<body class="list-page">
+  <header class="board-header">
+    <div class="board-brand">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 7v18" stroke="#fff" stroke-width="3.4"/><path d="M14.5 16 22 8.5" stroke="#fff" stroke-width="3.4"/><path d="M14.5 16 22 23.5" stroke="#c4b5fd" stroke-width="3.4"/><circle cx="24.5" cy="6" r="1.6" fill="#c4b5fd" stroke="none"/></svg></span>
+      <div class="board-titles"><div class="project-name" style="cursor:default">Meus quadros</div><div class="board-subtitle">Crie quadros e acesse os que foram compartilhados com você.</div></div>
+    </div>
+    <div class="head-actions"><div class="account-menu" style="border:0;margin:0;padding:0"><span class="account-avatar" id="avatar"></span><span class="account-email" id="accName"></span><button class="logout-button" id="logout" type="button">Sair</button></div></div>
+  </header>
+  <main class="list-main">
+    <form class="new-board" id="newBoardForm"><input id="newBoardName" maxlength="60" placeholder="Nome do novo quadro" aria-label="Nome do novo quadro"><button class="btn btn-primary" type="submit">Criar quadro</button></form>
+    <div class="section-title">Meus quadros <small id="mineCount"></small></div>
+    <div class="board-grid" id="mine"></div>
+    <div class="section-title">Compartilhados comigo <small id="sharedCount"></small></div>
+    <div class="board-grid" id="shared"></div>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="/static/api.js"></script>
+  <script src="/static/boards.js"></script>
+</body>
+</html>

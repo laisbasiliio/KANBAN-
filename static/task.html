@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tarefa | Quadro Kanban</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/extra.css">
+</head>
+<body class="list-page">
+  <header class="board-header">
+    <div class="board-brand">
+      <a class="back-btn" id="backLink" href="/boards" title="Voltar ao quadro" aria-label="Voltar ao quadro"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></a>
+      <div class="board-titles"><div class="project-name" id="boardName" style="cursor:default">Carregando...</div><div class="board-subtitle"><span id="roleBadge" class="role-badge"></span><span id="saveState" class="save-state"></span></div></div>
+    </div>
+    <div class="head-actions"><div class="account-menu" style="border:0;margin:0;padding:0"><span class="account-avatar" id="avatar"></span><span class="account-email" id="accName"></span><button class="logout-button" id="logout" type="button">Sair</button></div></div>
+  </header>
+
+  <main class="task-layout" id="layout" hidden>
+    <div>
+      <section class="panel">
+        <div class="field"><label for="title">Título</label><input id="title" class="task-title-input" maxlength="80"></div>
+        <div class="field"><label for="desc">Descrição</label><textarea id="desc" maxlength="400" placeholder="Detalhes da atividade"></textarea></div>
+        <div class="field" style="margin-bottom:0"><label for="column">Coluna</label><select id="column"></select></div>
+      </section>
+      <section class="panel" style="margin-top:16px">
+        <h2>Comentários</h2>
+        <div id="comments"></div>
+        <form class="comment-form" id="commentForm"><textarea id="commentText" maxlength="1000" placeholder="Escreva um comentário..."></textarea><div class="actions"><button type="submit" class="btn-save">Comentar</button></div></form>
+        <div class="note" id="viewerNote" hidden>Leitores podem ver os comentários, mas não podem comentar.</div>
+      </section>
+    </div>
+    <aside>
+      <section class="panel">
+        <div class="field"><label for="assignee">Responsável</label><select id="assignee"></select></div>
+        <div class="field"><label for="due">Prazo</label><input id="due" type="date"></div>
+        <div class="field"><label for="priority">Prioridade</label><select id="priority"><option value="baixa">Baixa</option><option value="media">Média</option><option value="alta">Alta</option></select></div>
+        <div class="field" style="margin-bottom:0"><label for="labels">Labels (separe por vírgula)</label><input id="labels" placeholder="bug, feature, urgente"></div>
+      </section>
+      <section class="panel" style="margin-top:16px">
+        <h2>Checklist <span id="checkCount" style="float:right"></span></h2>
+        <div class="progress"><i id="progressBar"></i></div>
+        <ul class="checklist" id="checklist"></ul>
+        <form class="add-line" id="checkForm"><input id="checkText" maxlength="120" placeholder="Nova subtarefa"><button class="btn-save" type="submit">Adicionar</button></form>
+      </section>
+    </aside>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <script src="/static/api.js"></script>
+  <script src="/static/task.js"></script>
+</body>
+</html>
